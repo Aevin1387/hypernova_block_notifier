@@ -1,4 +1,4 @@
-require_relative "emailer"
+require_relative "lib/emailer"
 require "mechanize"
 require "nokogiri"
 require "redis"
