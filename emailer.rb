@@ -19,7 +19,7 @@ class Emailer
   private
 
   def config
-    config = YAML.load_file("config.yml")
+    config = YAML.load_file("#{Dir.home}/.hypernova_notifier_config.yml")
     email_config = config["email"]
 
     if email_config.nil?
@@ -40,7 +40,7 @@ class Emailer
     self.options = self.options.each_with_object({}) { |(key, value), hash| hash[key.to_sym] = value }
   rescue Errno::ENOENT=> e
     if e.message.include? "No such file or directory"
-      puts "Please create a config.yml file. See config.yml.sample"
+      puts "Please create a .hypernova_notifier_config.yml file in your home directory. See config.yml.sample"
       exit
     end
   end
